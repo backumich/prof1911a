@@ -40,15 +40,11 @@ public class ListenerService {
         return winTicket;
     }
 
-    public HashSet<Listener> getListenerWithTwoTicketsOrMore(Map<Ticket, Listener> issuedTickets){
-        HashSet<Listener> result = new HashSet<>();
+
+    public HashSet<Listener> getListenerWithTwoTicketsOrMore(Map<Ticket, Listener> issuedTickets, int n){
         var listeners = new ArrayList<>(issuedTickets.values());
-        for (int i = 0; i <listeners.size(); i++) {
-            if (i == listeners.lastIndexOf(listeners.get(i))){
-                result.add(listeners.get(i));
-            }
-        }
-        return  result;
+        return  (HashSet<Listener>)listeners.stream().filter(i -> Collections.frequency(listeners, i) >= n)
+                .collect(Collectors.toSet());
     }
 
 
