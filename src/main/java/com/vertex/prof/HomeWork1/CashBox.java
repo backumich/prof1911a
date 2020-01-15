@@ -32,7 +32,7 @@ public class CashBox {
 
     private Ticket createTicket() {
         Ticket ticket = new Ticket(ticketCounter, ticketCounter, ticketCounter);
-        ticketCounter++;
+        ticketCounter++; //there is a single responsibility principle and this action violates it.
         return ticket;
     }
 

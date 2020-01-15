@@ -7,7 +7,7 @@ public class Ticket {
     private boolean win;
 
     public Ticket(int numberOfTicket, int numberOfSeats, int numberOfRow) {
-        this.numberOfTicket = numberOfTicket;
+        this.numberOfTicket = numberOfTicket; //ticketNumber would be a better name, same below
         this.numberOfSeats = numberOfSeats;
         this.numberOfRow = numberOfRow;
     }
