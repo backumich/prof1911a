@@ -7,15 +7,17 @@ import java.util.Scanner;
 public class Main {
     static Scanner scanner = new Scanner(System.in);
     private static ListenerService listenersService = ListenerService.getInstance();
-    private static CashBox cashBox = CashBox.getINSTANCE();
+    private static CashBox cashBox = CashBox.getInstance();
+
     // there is a Java naming convention https://www.javatpoint.com/java-naming-conventions
     // please follow it.
 
     public static void main(String[] args) {
         addListener();
-        Map<Ticket, Listener> issuedTickets= cashBox.issueTickets(listenersService.getListeners());
+        Map<Ticket, Listener> issuedTickets= cashBox.issueTickets(listenersService.getSortedListeners());
         Ticket winTicket = listenersService.compete(issuedTickets);
         System.out.println(issuedTickets.get(winTicket));
+        System.out.println(listenersService.getListenerWithTwoTicketsOrMore(issuedTickets, 2));
 
     }
 
@@ -38,9 +40,10 @@ public class Main {
                 System.out.println("Enter respect");
                 int respect = scanner.nextInt();
 
-                listenersService.addListenerHelper(name, gender, respect);
-                listenersService.sortedListeners(); //Bad approach - you are changing the inner collection from outside. I'd prefer to get sorted listeners once the queue is totally filled.
-                System.out.println(listenersService.getListeners()); // combine getListeners and sortedListeners into getSortedListeners.
+                listenersService.addListener(new Listener(name, Sex.values()[gender], respect));
+                //System.out.println(listenersService.getSortedListeners());
+                //listenersService.sortedListeners(); //Bad approach - you are changing the inner collection from outside. I'd prefer to get sorted listeners once the queue is totally filled.
+                //System.out.println(listenersService.getListeners()); // combine getListeners and sortedListeners into getSortedListeners.
             } else {
                 break;
             }

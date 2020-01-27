@@ -1,27 +1,28 @@
 package com.vertex.prof.HomeWork1;
 
 public class Ticket {
-    private int numberOfTicket;
-    private int numberOfSeats;
-    private int numberOfRow;
+    private int ticketNumber;
+    private int seatNumber;
+    private int rowNumber;
     private boolean win;
 
-    public Ticket(int numberOfTicket, int numberOfSeats, int numberOfRow) {
-        this.numberOfTicket = numberOfTicket; //ticketNumber would be a better name, same below
-        this.numberOfSeats = numberOfSeats;
-        this.numberOfRow = numberOfRow;
+
+    public Ticket(int ticketNumber) {
+        this.ticketNumber = ticketNumber; //ticketNumber would be a better name, same below
+        this.seatNumber = ticketNumber;
+        this.rowNumber = ticketNumber;
     }
 
-    public int getNumberOfTicket() {
-        return numberOfTicket;
+    public int getTicketNumber() {
+        return ticketNumber;
     }
 
-    public int getNumberOfSeats() {
-        return numberOfSeats;
+    public int getSeatNumber() {
+        return seatNumber;
     }
 
-    public int getNumberOfRow() {
-        return numberOfRow;
+    public int getRowNumber() {
+        return rowNumber;
     }
 
     public boolean isWin() {
@@ -30,5 +31,15 @@ public class Ticket {
 
     public void setWin(boolean win) {
         this.win = win;
+    }
+
+    @Override
+    public String toString() {
+        return "Ticket{" +
+                "ticketNumber=" + ticketNumber +
+                ", seatNumber=" + seatNumber +
+                ", rowNumber=" + rowNumber +
+                ", win=" + win +
+                '}';
     }
 }

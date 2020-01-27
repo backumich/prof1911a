@@ -7,12 +7,12 @@ import java.util.Map;
 
 public class CashBox {
     private static CashBox INSTANCE;
-    private int ticketCounter = 1;
+    private int ticketCounter = 0;
 
     private CashBox() {
     }
 
-    public static CashBox getINSTANCE() {
+    public static CashBox getInstance() {
         if (INSTANCE == null) {
             INSTANCE = new CashBox();
         }
@@ -31,10 +31,11 @@ public class CashBox {
     }
 
     private Ticket createTicket() {
-        Ticket ticket = new Ticket(ticketCounter, ticketCounter, ticketCounter);
-        ticketCounter++; //there is a single responsibility principle and this action violates it.
-        return ticket;
+        //ticketCounter++; //there is a single responsibility principle and this action violates it.
+        return new Ticket(ticketCounter++);
     }
+
+
 
 
 }
